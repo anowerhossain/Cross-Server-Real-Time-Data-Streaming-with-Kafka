@@ -119,4 +119,32 @@ bin/kafka-console-consumer.sh --bootstrap-server 161.97.ANO.WER:9092 --topic new
 ```
 💬 Now you will see data pushing in server 161.97.ANO.WER:9092 in `news` topic are consuming in 75.ANO.WER.143
 
+### Kafka Consumer Code (Using `kafka-python`)
+
+- Install kafka-python and run the python code using the bootstrap_server address and the topic name.
+
+```bash
+pip install kafka-python
+```
+
+```python
+from kafka import KafkaConsumer
+
+# Kafka Consumer Configuration
+consumer = KafkaConsumer('news', bootstrap_servers='161.97.ANO.WER:9092')
+
+print("Listening for messages...")
+
+# Poll for messages
+try:
+    for message in consumer:
+        print(f"Received message: {message.value} from topic: {message.topic}")
+
+except KeyboardInterrupt:
+    print("\nStopping consumer...")
+
+finally:
+    consumer.close()  # Gracefully close the consumer
+```
+
 

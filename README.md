@@ -55,7 +55,6 @@ sudo firewall-cmd --reload
 ```
 ✅ This allows external servers (like your consumer) to connect to the Kafka broker on 161.ANO.WER.145:9092
 
-
 - Start the Kafka server in KRaft mode using the server.properties file located in the config/kraft folder:
 
 ```bash
@@ -63,6 +62,14 @@ bin/kafka-server-start.sh config/kraft/server.properties
 ```
 🚀 This starts Kafka in KRaft mode, and you'll see logs indicating that the server has started successfully.
 
+- To run Kafka in the background using `nohup` command
+
+```bash
+nohup bin/kafka-server-start.sh config/kraft/server.properties > kafka.log 2>&1 &
+```
+- `nohup` → Keeps Kafka running even after logout.
+- `> kafka.log 2>&1` → Saves output & errors in kafka.log.
+- `&` → Runs the process in the background.
 
 ### Create a Topic and Start Producer 📝
 

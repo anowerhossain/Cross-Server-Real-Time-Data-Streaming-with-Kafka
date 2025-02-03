@@ -65,10 +65,10 @@ bin/kafka-server-start.sh config/kraft/server.properties
 - To run Kafka in the background using `nohup` command
 
 ```bash
-nohup bin/kafka-server-start.sh config/kraft/server.properties > kafka.log 2>&1 &
+nohup bin/kafka-server-start.sh config/kraft/server.properties > anower_kafka.log 2>&1 &
 ```
 - `nohup` → Keeps Kafka running even after logout.
-- `> kafka.log 2>&1` → Saves output & errors in kafka.log.
+- `> anower_kafka.log 2>&1` → Saves output & errors in kafka.log.
 - `&` → Runs the process in the background.
 
 ### Create a Topic and Start Producer 📝

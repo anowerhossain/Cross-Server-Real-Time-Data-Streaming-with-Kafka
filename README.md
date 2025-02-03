@@ -89,4 +89,34 @@ Kafka in KRaft mode is working!
 ```
 💬 Each message will be sent to the `news` topic on the Kafka server.
 
+### Run the consumer code from another server
+
+- To run, the consumer code you'll need to download the Kafka archive from the official Apache site. This command fetches Kafka version 3.8.0
+
+```bash
+wget https://downloads.apache.org/kafka/3.8.0/kafka_2.13-3.8.0.tgz
+```
+📂 This will download the Kafka archive as a .tgz file to your current directory.
+
+- Next, extract the downloaded Kafka tarball to prepare it for use. 
+
+```bash
+tar -xzf kafka_2.13-3.8.0.tgz
+```
+📂 This will extract the Kafka files into a folder named kafka_2.13-3.8.0.
+
+- Change into the Kafka directory where the Kafka files are located.
+
+```bash
+cd kafka_2.13-3.8.0
+```
+🏠 This takes you into the extracted Kafka directory to perform configurations.
+
+- Run the consumer code from another server with this command to consume the data which are comming in the `news` topic.
+
+```bash
+bin/kafka-console-consumer.sh --bootstrap-server 161.97.ANO.WER:9092 --topic news --from-beginning
+```
+💬 Now you will see data pushing in server 161.97.ANO.WER:9092 in `news` topic are consuming in 75.ANO.WER.143
+
 

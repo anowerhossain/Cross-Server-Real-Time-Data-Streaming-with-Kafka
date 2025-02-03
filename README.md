@@ -62,7 +62,7 @@ bin/kafka-server-start.sh config/kraft/server.properties
 ```
 🚀 This starts Kafka in KRaft mode, and you'll see logs indicating that the server has started successfully.
 
-- To run Kafka in the background using `nohup` command
+- 🔄 To run Kafka in the background using `nohup` command
 
 ```bash
 nohup bin/kafka-server-start.sh config/kraft/server.properties > anower_kafka.log 2>&1 &
@@ -71,6 +71,15 @@ nohup bin/kafka-server-start.sh config/kraft/server.properties > anower_kafka.lo
 - `> anower_kafka.log 2>&1` → Saves output & errors in kafka.log.
 - `&` → Runs the process in the background.
 
+- ✅ Check the kafka process
+```bash
+ps aux | grep kafka
+```
+
+- 🛑 To Kill the process
+```bash
+kill -9 <PID>
+```
 ### Create a Topic and Start Producer 📝
 
 - You need to create a topic where producers will send messages. For this example, we'll create a topic called `news`

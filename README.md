@@ -135,6 +135,56 @@ bin/kafka-console-consumer.sh --bootstrap-server 161.97.ANO.WER:9092 --topic new
 ```
 💬 Now you will see data pushing in server 161.97.ANO.WER:9092 in `news` topic are consuming in 75.ANO.WER.143
 
+### Kafka Producer Code (Using `kafka-python`)
+- Install kafka-python and run the python code using the bootstrap_server address and the topic name.
+
+```bash
+pip install kafka-python
+```
+
+```python
+from kafka import KafkaProducer
+import json
+
+# Kafka Producer Configuration
+producer = KafkaProducer(
+    bootstrap_servers='161.97.ANO.WER:9092',  # Replace with your Kafka broker address
+    value_serializer=lambda v: json.dumps(v).encode('utf-8')  # Serialize message to JSON
+)
+
+# Kafka Topic
+topic = 'news'  # Replace with your topic name
+
+print("Enter messages to send to Kafka. Type 'exit' to quit.")
+
+try:
+    while True:
+        # Take input from the user
+        message_input = input("Enter your message: ")
+
+        # Exit condition
+        if message_input.lower() == 'exit':
+            print("Exiting the producer...")
+            break
+
+        # Prepare message value
+        message_value = {"message": message_input}
+
+        # Send message to Kafka topic
+        producer.send(topic, value=message_value)
+
+        # Wait for any outstanding messages to be delivered
+        producer.flush()
+        print(f"Message sent to Kafka: {message_input}")
+
+except KeyboardInterrupt:
+    print("\nStopping producer...")
+
+finally:
+    producer.close()  # Gracefully close the producer
+```
+
+
 ### Kafka Consumer Code (Using `kafka-python`)
 
 - Install kafka-python and run the python code using the bootstrap_server address and the topic name.
